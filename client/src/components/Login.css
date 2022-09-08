@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(239, 232, 223);
+}
+
+.Box {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,10),rgba(0,0,0,0)), url("https://cdn.pocket-lint.com/r/s/1201x/assets/images/155087-laptops-review-microsoft-surface-laptop-go-review-image1-6ezitk9ymj.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    color: #fff;
+    padding-bottom: 2rem;
+    font-weight: bold;
+  }
+  a{
+    color: rgb(255, 255, 255);
+  }
+  a:hover{
+    color: rgb(82, 8, 23);
+    text-decoration: none;
+  }
+  .form-control:focus {
+  
+      color: #000;
+      background-color: #fff;
+      border:2px solid crimson;
+      outline: 0;
+      box-shadow: none;
+  
+  }
+
+  input {
+    opacity: 50%;
+  }
+  
+  .btn{
+    color: crimson;
+    background: white;
+    border: crimson;
+  }
+  .btn:hover {
+    background: rgb(84, 8, 23);
+    border: crimson;
+  }
+
