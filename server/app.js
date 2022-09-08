@@ -6,7 +6,7 @@ const path = require("path");
 
 const authRoutes = require('./routes/auth');
 const videoRoutes = require('./routes/videoRoutes');
-const { port } = require("./config/config");
+const { port, environment } = require("./config/config");
 
 const PORT = port || 8080;
 
@@ -14,6 +14,10 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/public", express.static(path.join(__dirname, "public")));
+
+if (environment === "production") {
+    app.use(express.static("client/build"));
+}
 
 app.use("/api/video", videoRoutes);
 app.use('/api/user', authRoutes);
