@@ -6,6 +6,9 @@ const path = require("path");
 
 const authRoutes = require('./routes/auth');
 const videoRoutes = require('./routes/videoRoutes');
+const { port } = require("./config/config");
+
+const PORT = port || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -16,4 +19,4 @@ app.use("/api/video", videoRoutes);
 app.use('/api/user', authRoutes);
 
 dbConnect();
-app.listen(8080, () => console.log('Server is up and running'));
+app.listen(PORT, () => console.log('Server is up and running'));

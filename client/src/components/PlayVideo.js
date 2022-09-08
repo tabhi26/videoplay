@@ -12,7 +12,7 @@ const PlayVideo = ({video}) => {
                 height="240"
                 controls
                 >
-                <source src={`http://localhost:8080${video}`} />
+                <source src={`${process.env.REACT_APP_BASE_URL}${video}`} />
                 ;Your browser does not support the video tag.
                 </video>
             );

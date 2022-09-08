@@ -16,7 +16,7 @@ const Home = () => {
     }
     
     const fetchData = async () => {
-        const response = await axios.get("http://localhost:8080/api/video/getAll");
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/video/getAll`);
         setVideo(response.data);
         return;
     }

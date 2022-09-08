@@ -12,7 +12,7 @@ function Login() {
     const navigate = useNavigate();
 
     const getLogin = async (userDetail) => {
-        const response = await axios.post("http://localhost:8080/api/user/auth/login", userDetail);
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/auth/login`, userDetail);
         if (response.data.token) {
             localStorage.setItem('token', response.data.token);
             navigate('/home');

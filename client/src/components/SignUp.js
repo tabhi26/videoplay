@@ -13,7 +13,7 @@ function SignUp() {
     const navigate = useNavigate();
 
     const getSignUp = async (userDetail) => {
-        const response = await axios.post("http://localhost:8080/api/user/auth/signup", userDetail);
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/auth/signup`, userDetail);
         if (response.data.success) {
             navigate('/');
         }

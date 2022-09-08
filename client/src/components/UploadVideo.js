@@ -25,7 +25,7 @@ const UploadVideo = ({ show, setShow }) => {
     }
 
     axios
-      .post("http://localhost:8080/api/video/create", formdata)
+      .post(`${process.env.REACT_APP_BASE_URL}/api/video/create`, formdata)
       .then((success) => {
         alert("Submitted successfully");
         setShow({ ...show, upload: !show.upload });
