@@ -1,0 +1,11 @@
+h1 {
+    color: "black";
+    margin: "10vh 0 0 50vh";
+}
+/* style={{marginTop: "10px",height: "50vh", width: "120vh", marginLeft: "25%"}} */
+.container {
+    margin-top: 10px;
+    height: 50vh;
+    width: 120vh;
+    margin-left: 25%;
+}

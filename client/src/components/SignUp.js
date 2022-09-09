@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 import "./Login.css";
 
-function SignUp() {
+function SignUp(props) {
     const initialValue = {
         name: "",
         email: "",
@@ -13,7 +14,9 @@ function SignUp() {
     const navigate = useNavigate();
 
     const getSignUp = async (userDetail) => {
+        props.setLoader(true);
         const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/auth/signup`, userDetail);
+        props.setLoader(false); 
         if (response.data.success) {
             navigate('/');
         }
@@ -30,6 +33,7 @@ function SignUp() {
       <div className="container">
         <div className="row">
           <div className="col-md-5 mx-auto">
+            {props.loader ? (<Loading />) : (
             <div className="card card-body" style={{ marginTop: 150, backgroundColor: "crimson" }}>
                 <h4 style={{color: "white", marginLeft: "30%"}}>Admin Dashboard</h4>
               <form
@@ -99,7 +103,7 @@ function SignUp() {
                   <Link to="/">Login</Link>
                 </p>
               </form>
-            </div>
+            </div>)}
           </div>
         </div>  
       </div>

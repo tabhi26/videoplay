@@ -2,8 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
-function Login() {
+function Login(props) {
     const initialValue = {
         email: "",
         password: ""
@@ -12,7 +13,9 @@ function Login() {
     const navigate = useNavigate();
 
     const getLogin = async (userDetail) => {
+        props.setLoader(true);
         const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/auth/login`, userDetail);
+        props.setLoader(false);
         if (response.data.token) {
             localStorage.setItem('token', response.data.token);
             navigate('/home');
@@ -31,7 +34,8 @@ function Login() {
       <div className="container">
         <div className="row">
           <div className="col-md-5 mx-auto">
-            <div className="card card-body" style={{ marginTop: 150, backgroundColor: "crimson" }}>
+          {props.loader ? (<Loading />) :
+            (<div className="card card-body" style={{ marginTop: 150, backgroundColor: "crimson" }}>
                 <h4 style={{color: "white", marginLeft: "30%"}}>Admin Dashboard</h4>
               <form
                 onSubmit={handleSubmit}
@@ -82,7 +86,7 @@ function Login() {
                 <span className="text-muted">Not a member?</span>
                 <Link to="/signup">Sign Up</Link>
               </p>
-            </div>
+            </div>)}
           </div>
         </div>  
       </div>

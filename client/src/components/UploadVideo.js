@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Loading from "./Loading"
 
-const UploadVideo = ({ show, setShow }) => {
+const UploadVideo = ({ show, setShow, loader, setLoader }) => {
   const [videos, setVideos] = useState([]);
   const initialValue = {
     title: "",
@@ -24,13 +25,16 @@ const UploadVideo = ({ show, setShow }) => {
       formdata.append(`${item}`, videoDetail[item]);
     }
 
+    setLoader(true);
     axios
       .post(`${process.env.REACT_APP_BASE_URL}/api/video/create`, formdata)
       .then((success) => {
+        setLoader(false);
         alert("Submitted successfully");
         setShow({ ...show, upload: !show.upload });
       })
       .catch((error) => {
+        setLoader(false);
         console.log(error);
         alert("Error happened!");
       });
@@ -38,6 +42,7 @@ const UploadVideo = ({ show, setShow }) => {
 
   return (
     <>
+    {loader ? (<Loading />) : (
       <form onSubmit={hadleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Title</label>
@@ -122,7 +127,7 @@ const UploadVideo = ({ show, setShow }) => {
         >
           Cancel
         </button>
-      </form>
+      </form>)}
     </>
   );
 };
